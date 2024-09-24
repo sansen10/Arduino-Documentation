@@ -1,0 +1,25 @@
+// C++ code
+//
+const int Push=8;
+const int Buzz=7;
+void setup()
+{
+  pinMode(Push, INPUT);
+  pinMode(Buzz, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  while(true){
+  if(digitalRead(Push)==HIGH){
+   	Serial.println(digitalRead(Push));
+  	digitalWrite(Buzz,HIGH);
+    delay(100);
+  }
+    else{
+      digitalWrite(Buzz,LOW);
+    }
+  
+  }
+}
