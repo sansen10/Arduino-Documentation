@@ -1,1 +1,28 @@
+// C++ code
+//
+#include <LiquidCrystal.h>
+const int rs=9, en=8, d4=7, d5=6, d6=5, d7=4;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+void setup()
+{
+  pinMode(A3,INPUT);
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Temperature is");
+}
 
+void loop()
+{
+  lcd.setCursor(0,0);
+  lcd.print("Temperature is");
+  float value=analogRead(A3);
+  float celsius=value*0.004882814;
+  celsius=(celsius-0.5)*100;
+  lcd.setCursor(0,1);
+  lcd.print(celsius);
+  delay(500);
+  lcd.clear();
+  
+}
