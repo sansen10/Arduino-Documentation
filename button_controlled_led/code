@@ -1,0 +1,27 @@
+// C++ code
+//
+const int Push=8;
+const int Led=7;
+void setup()
+{
+  pinMode(Push, INPUT);
+  pinMode(Led, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(6, HIGH);
+  while(true){
+    Serial.println(digitalRead(Push));
+  if(digitalRead(Push)==1){
+  	digitalWrite(Led, HIGH);
+    delay(100);
+  }
+    else{
+      digitalWrite(Led, LOW);
+      delay(100);
+    }
+  
+  }
+}
