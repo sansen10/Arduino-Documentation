@@ -1,0 +1,33 @@
+// C++ code
+//
+const int Red=7;
+const int Yellow=6;
+const int Green=5;
+void setup()
+{
+  pinMode(Red, OUTPUT);
+  pinMode(Yellow, OUTPUT);
+  pinMode(Green, OUTPUT);
+}
+
+void loop()
+{
+  for(int i=0;i<60;i++) {
+    if(i<=25) {
+      digitalWrite(7,HIGH);
+      digitalWrite(5,LOW);
+      digitalWrite(6, LOW);
+    }
+    else if(i>=26 && i<=35) {
+      digitalWrite(6,HIGH);
+      digitalWrite(7,LOW);
+      digitalWrite(5,LOW);
+    }
+    else {
+      digitalWrite(5,HIGH);
+      digitalWrite(6,LOW);
+      digitalWrite(7,LOW);
+    }
+    delay(1000);
+  }
+}
