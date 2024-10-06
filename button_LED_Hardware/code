@@ -1,0 +1,44 @@
+int ir=2;
+int value;
+int ans;
+int trig = 3; 
+int echo = 4; 
+float duration_us1, distance_cm1, duration_us2, distance_cm2;
+void setup(){
+  pinMode(ir,INPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  Serial.begin(9600);
+}
+void loop(){
+  value=digitalRead(ir);
+  
+  delay(1000);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+  duration_us1 = pulseIn(echo, HIGH);
+  distance_cm1 = 0.017 * duration_us1;
+  delay(100);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+  duration_us2 = pulseIn(echo, HIGH);
+  distance_cm2 = 0.017 * duration_us2;
+  if(value==0 && distance_cm2<distance_cm1){
+    ans++;
+  }
+  if(value==0 && distance_cm2==distance_cm1){
+    ans=ans;
+  }
+  if(value==0 && distance_cm2>distance_cm1){
+    if(ans==0){
+      ans=ans;
+    }
+    else{
+      ans--;
+    }
+    
+  }
+  Serial.println(ans);
+}
